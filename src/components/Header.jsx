@@ -10,12 +10,14 @@ const Header = () => {
 
     const handleLogout = () => {
         logout();
-        navigate('/login');
+        navigate('/');
+        // navigate('/login');
+        // window.reload();
     };
 
     return (
         <nav className="bg-white dark:bg-gray-800 shadow-sm">
-            <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div className="container mx-auto xl:px-20 lg:px-16 md:px-8 px-5 xl:py-5 md:py-4 py-3 flex justify-between items-center">
                 <Link to="/">
                     <h2 className="font-bold text-blue-700 xl:text-3xl md:text-2xl text-xl flex items-center xl:gap-3 lg:gap-2 md:gap-[6px] gap-1"><MdTask />Calendar App</h2>
                 </Link>
@@ -23,16 +25,16 @@ const Header = () => {
                     {/* <DarkModeToggle /> */}
                     {user ? (
                         <>
-                            <span className="text-gray-700 dark:text-gray-300">Hello, {user.name}</span>
-                            <Link
+                            <span className="md:block hidden text-gray-700 dark:text-gray-300 font-medium">Hello, <span className='text-blue-700 font-semibold'>{user.name}</span></span>
+                            {/* <Link
                                 to="/dashboard"
                                 className="text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-indigo-400"
                             >
                                 Dashboard
-                            </Link>
+                            </Link> */}
                             <button
                                 onClick={handleLogout}
-                                className="text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-indigo-400"
+                                className="bg-amber-300 px-4 md:py-2 py-[6px] md:text-base text-sm rounded-xl font-medium shadow text-gray-600 dark:text-gray-400 hover:text-blue-700 dark:hover:text-indigo-400"
                             >
                                 Logout
                             </button>
