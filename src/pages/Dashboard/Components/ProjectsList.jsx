@@ -48,7 +48,7 @@ const ProjectsList = () => {
 
     return (
         <div className="space-y-6">
-            <Notification message={notification.message} type={notification.type} />
+            <Notification message={notification?.message} type={notification?.type} />
 
             <div className="flex justify-between items-center">
                 <h2 className="xl:text-2xl md:text-xl text-lg font-bold text-blue-700 dark:text-white">My Projects</h2>
@@ -81,7 +81,7 @@ const ProjectsList = () => {
                     <p className="text-gray-500 dark:text-gray-400">You don't have any projects yet.</p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:gap-6 lg:gap-4 gap-3">
                     {projects?.map((project) => (
                         <div key={project?._id} className="relative">
                             <ProjectCard project={project} />
@@ -91,7 +91,7 @@ const ProjectsList = () => {
                                         setEditingProject(project);
                                         setShowForm(true);
                                     }}
-                                    className="p-1 font-semibold md:text-base text-sm text-blue-700 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-600"
+                                    className="p-1 font-semibold md:text-base text-sm text-blue-700 dark:text-indigo-400 hover:text-blue-900 dark:hover:text-indigo-600"
                                 >
                                     Edit
                                 </button>

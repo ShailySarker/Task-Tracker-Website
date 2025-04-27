@@ -17,7 +17,7 @@ const Header = () => {
 
     return (
         <nav className="bg-white dark:bg-gray-800 shadow-sm">
-            <div className="container mx-auto xl:px-20 lg:px-16 md:px-8 px-5 xl:py-5 md:py-4 py-3 flex justify-between items-center">
+            <div className="container mx-auto xl:px-20 lg:px-14 md:px-8 px-5 xl:py-5 md:py-4 py-3 flex justify-between items-center">
                 <Link to="/">
                     <h2 className="font-bold text-blue-700 xl:text-3xl md:text-2xl text-xl flex items-center xl:gap-3 lg:gap-2 md:gap-[6px] gap-1"><MdTask />Task Tracker</h2>
                 </Link>
