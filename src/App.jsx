@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routers />
-        <ToastContainer position="bottom-right" />
+        <ToastContainer position="top-center" />
       </AuthProvider>
     </BrowserRouter>
   )

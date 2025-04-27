@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { Link, useNavigate } from 'react-router';
 import DarkModeToggle from './DarkModeToggle';
 import { MdTask } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 const Header = () => {
     const { user, logout } = useAuth();
@@ -10,9 +11,8 @@ const Header = () => {
 
     const handleLogout = () => {
         logout();
-        navigate('/');
-        // navigate('/login');
-        // window.reload();
+        navigate('/login');
+        toast.warning("Logout successfully!", { duration: 3000 });
     };
 
     return (

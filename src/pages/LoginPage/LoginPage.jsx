@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -26,25 +27,28 @@ const LoginPage = () => {
 
         try {
             await login(email, password);
+            toast.success("Login successfully!", { duration: 3000 })
         } catch (err) {
-            // Error is already handled by useAuth
+            if (err.response && err.response.data && err.response.data.error?.message) {
+                // Show backend error
+                toast.error(err.response.data.error.message, { duration: 3000 });
+            } else {
+                toast.error('Something went wrong. Please try again.', { duration: 3000 });
+            }
         }
     };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
-                <div>
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                        Sign in to your account
-                    </h2>
-                </div>
-
-                {error && (
+                <h2 className="text-center xl:text-3xl lg:text-2xl text-xl font-bold text-gray-900 dark:text-white">
+                    Sign in to your account
+                </h2>
+                {/* {error && (
                     <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
                         {error}
                     </div>
-                )}
+                )} */}
 
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-4">

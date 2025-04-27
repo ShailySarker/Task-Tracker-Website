@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({
@@ -31,16 +32,16 @@ const RegisterPage = () => {
 
     const validateForm = () => {
         const newErrors = {};
-        
+
         // Name validation
         if (!formData.name.trim()) newErrors.name = 'Name is required';
-        
+
         // Email validation
         if (!formData.email.trim()) newErrors.email = 'Email is required';
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             newErrors.email = 'Email is invalid';
         }
-        
+
         // Password validation
         if (!formData.password) {
             newErrors.password = 'Password is required';
@@ -62,15 +63,15 @@ const RegisterPage = () => {
                 newErrors.password = 'Password must be at least 8 characters';
             }
         }
-        
+
         // Confirm password validation
         if (formData.password !== formData.confirmPassword) {
             newErrors.confirmPassword = 'Passwords do not match';
         }
-        
+
         // Country validation
         if (!formData.country) newErrors.country = 'Country is required';
-        
+
         return newErrors;
     };
 
@@ -84,8 +85,14 @@ const RegisterPage = () => {
 
         try {
             await register(formData.name, formData.email, formData.password, formData.country);
+            toast.success("Register successfully!", { duration: 3000 })
         } catch (err) {
-            // Error is already handled by useAuth
+            if (err.response && err.response.data && err.response.data.error?.message) {
+                // Show backend error
+                toast.error(err.response.data.error.message, { duration: 3000 });
+            } else {
+                toast.error('Something went wrong. Please try again.', { duration: 3000 });
+            }
         }
     };
 
@@ -152,7 +159,7 @@ const RegisterPage = () => {
                                 onChange={handleChange}
                                 className={`appearance-none relative block w-full px-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'
                                     } placeholder-gray-500 text-gray-900 bg-white rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400`}
-                                placeholder="Password (min 6 characters)"
+                                placeholder="Password (min 8 characters)"
                             />
                             {errors.password && (
                                 <p className="mt-1 text-sm text-red-600">{errors.password}</p>
