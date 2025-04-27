@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingSpinner = ({ size = 'h-8 w-8' }) => {
+const LoadingSpinner = ({ size = 'h-12 w-12' }) => {
     return (
         <div className="flex justify-center items-center">
             <div
