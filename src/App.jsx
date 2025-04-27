@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router";
 import Routers from "./routes/Router";
 import { AuthProvider } from "./contextAPI/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routers />
+        <ToastContainer position="bottom-right" />
       </AuthProvider>
     </BrowserRouter>
   )

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_BASE_URL } from './base';
 
-const API_URL = `${API_BASE_URL}/projects`;
+const API_URL = `${API_BASE_URL}/auth`;
 
 export const authRegister = async (name, email, password, country) => {
     const response = await axios.post(`${API_URL}/register`, {

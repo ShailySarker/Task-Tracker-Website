@@ -8,7 +8,7 @@ const Home = () => {
 
     return (
         <div className="text-center h-screen flex flex-col justify-center items-center bg-blue-50">
-            <div className="flex items-center justify-center gap-3 text-blue-900">
+            <div className="flex items-center justify-center gap-3 text-blue-700">
                 <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">Welcome to</h1>
                 <MdTask className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl" />
                 <h1 className="xl:text-5xl lg:text-4xl md:text-3xl text-2xl font-bold">Task Tracker</h1>
@@ -19,7 +19,7 @@ const Home = () => {
             {isAuthenticated ? (
                 <Link
                     to="/dashboard"
-                    className="inline-flex items-center xl:px-8 px-6 xl:py-3 lg:py-2 py-[6px] border border-transparent md:text-base text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:border-2 hover:border-blue-900 hover:bg-white hover:text-blue-950"
+                    className="inline-flex items-center xl:px-8 px-6 xl:py-3 lg:py-2 py-[6px] border border-transparent md:text-base text-sm font-medium rounded-md shadow-sm text-white bg-blue-700 hover:border-2 hover:border-blue-700 hover:bg-white hover:text-blue-950"
                 >
                     Go to Dashboard
                 </Link>
@@ -27,7 +27,7 @@ const Home = () => {
                 <div className="space-x-4">
                     <Link
                         to="/login"
-                        className="inline-flex items-center xl:px-8 px-6 xl:py-3 lg:py-2 py-[6px] border border-transparent md:text-base text-sm font-medium rounded-md shadow-sm text-white bg-blue-900 hover:bg-blue-950"
+                        className="inline-flex items-center xl:px-8 px-6 xl:py-3 lg:py-2 py-[6px] border border-transparent md:text-base text-sm font-medium rounded-md shadow-sm text-white bg-blue-700 hover:bg-blue-950"
                     >
                         Login
                     </Link>
