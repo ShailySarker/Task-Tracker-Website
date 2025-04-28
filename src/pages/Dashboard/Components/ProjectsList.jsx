@@ -4,12 +4,24 @@ import LoadingSpinner from '../../../components/LoadingSpinner';
 import Notification from '../../../components/Notification';
 import ProjectForm from './ProjectForm';
 import ProjectCard from './ProjectCard';
+import { toast } from 'react-toastify';
 
 const ProjectsList = () => {
     const { projects, loading, error, createProject, updateProject, deleteProject } = useProjects();
     const [showForm, setShowForm] = useState(false);
     const [editingProject, setEditingProject] = useState(null);
     const [notification, setNotification] = useState({ message: '', type: '' });
+
+    const isDisabled = projects?.length >= 4;
+
+    const handleClick = () => {
+        if (isDisabled) {
+            toast.warning('Any User can have maximum 4 projects', { duration: 3000 });
+        } else {
+            setEditingProject(null);
+            setShowForm(true);
+        }
+    };
 
     const handleCreate = async (projectData) => {
         try {
@@ -52,7 +64,7 @@ const ProjectsList = () => {
 
             <div className="flex justify-between items-center">
                 <h2 className="xl:text-2xl md:text-xl text-lg font-bold text-blue-700 dark:text-white">My Projects</h2>
-                <button
+                {/* <button
                     onClick={() => {
                         setEditingProject(null);
                         setShowForm(true);
@@ -60,7 +72,20 @@ const ProjectsList = () => {
                     className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-sm text-white bg-blue-700 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                     New Project
-                </button>
+                </button> */}
+                <span
+                    title={isDisabled ? 'Any User can have maximum 4 projects' : ''}
+                    onClick={handleClick}
+                    style={{ display: 'inline-block', cursor: isDisabled ? 'not-allowed' : 'pointer' }}
+                >
+                    <button
+                        disabled={isDisabled}
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-sm text-white bg-blue-700 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        style={{ pointerEvents: 'none' }}
+                    >
+                        New Project
+                    </button>
+                </span>
             </div>
 
             {showForm && (

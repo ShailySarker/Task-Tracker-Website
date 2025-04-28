@@ -103,7 +103,7 @@ const TaskForm = ({ onSubmit, onCancel }) => {
           onChange={handleChange}
           className="mt-2 border-2 px-4 md:py-2 py-[6px] block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
         >
-          <option value="">Select Status</option>
+          {/* <option value="">Select Status</option> */}
           <option value="todo">To Do</option>
           <option value="in-progress">In Progress</option>
           <option value="completed">Completed</option>
