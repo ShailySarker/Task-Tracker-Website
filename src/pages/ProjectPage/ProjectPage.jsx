@@ -7,7 +7,7 @@ const ProjectPage = () => {
     const { projectId } = useParams();
     useTaskNotifications(projectId);
     return (
-        <div>
+        <div className='bg-blue-50 xl:px-20 lg:px-14 md:px-8 px-5 min-h-screen'>
             <TasksList projectId={projectId} />
         </div>
     );

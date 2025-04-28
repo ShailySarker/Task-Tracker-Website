@@ -78,7 +78,7 @@ const ProjectsList = () => {
 
             {projects?.length === 0 ? (
                 <div className="text-center xl:py-36 lg:py-24 md:py-20 py-16">
-                    <p className="text-gray-500 dark:text-gray-400">You don't have any projects yet.</p>
+                    <p className="text-gray-500 dark:text-gray-400 font-medium">You don't have any projects yet.</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:gap-6 lg:gap-4 gap-3">
